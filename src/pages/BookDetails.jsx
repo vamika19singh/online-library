@@ -7,16 +7,33 @@ export default function BookDetails() {
     state.books.find(b => b.id === id)
   )
 
-  return (
-    <div className="p-6">
-      <h2 className="text-2xl">{book.title}</h2>
-      <p>{book.author}</p>
-      <p>{book.description}</p>
-      <p>Rating: {book.rating}</p>
+  if (!book) {
+    return <p className="p-6">Book not found</p>
+  }
 
-      <Link to="/books/all" className="text-blue-600 underline">
-        Back to Browse
-      </Link>
-    </div>
+  return (
+    <main className="max-w-3xl mx-auto px-6 py-10">
+      <div className="bg-white p-8 rounded-lg shadow">
+        <h2 className="text-3xl font-bold mb-2">
+          {book.title}
+        </h2>
+        <p className="text-gray-600 mb-4">
+          by {book.author}
+        </p>
+
+        <p className="mb-4">{book.description}</p>
+
+        <p className="font-semibold mb-6">
+          ⭐ Rating: {book.rating}
+        </p>
+
+        <Link
+          to="/books/all"
+          className="inline-block text-blue-600 hover:underline"
+        >
+          ← Back to Browse
+        </Link>
+      </div>
+    </main>
   )
 }
