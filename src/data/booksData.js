@@ -15,4 +15,21 @@ export const booksData = [
     description: "Self improvement book",
     rating: 4.8,
   },
+  {
+    id: 3,
+    title: "1984",
+    author: "George Orwell",
+    category: "Fiction",
+    description: "Dystopian novel",
+    rating: 4.6,
+  },
+  {
+    id: 4,
+    title: "The Martian",   
+    author: "Andy Weir",
+    category: "Sci-Fi",
+    description: "Survival on Mars",
+    rating: 4.7,
+  },
+
 ]

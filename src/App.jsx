@@ -1,4 +1,7 @@
-import { Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Provider } from "react-redux"
+import { store } from "./redux/store"
+
 import Header from "./components/Header"
 import Home from "./pages/Home"
 import BrowseBooks from "./pages/BrowseBooks"
@@ -8,17 +11,17 @@ import NotFound from "./pages/NotFound"
 
 function App() {
   return (
-    <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/books" element={<BrowseBooks />} />
-        <Route path="/books/:category" element={<BrowseBooks />} />
-        <Route path="/book/:id" element={<BookDetails />} />
-        <Route path="/add-book" element={<AddBook />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<><Header /><Home /></>} />
+          <Route path="/books/:category" element={<><Header /><BrowseBooks /></>} />
+          <Route path="/book/:id" element={<><Header /><BookDetails /></>} />
+          <Route path="/add" element={<><Header /><AddBook /></>} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   )
 }
 
